@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from "../../assets/furbook-logo-h.png";
-import Auth from '../../utils/auth';
+// import Auth from '../../utils/auth';
 
 
 const Header = () => {
