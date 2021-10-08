@@ -1,0 +1,8 @@
+/node_modules
+.env
+
+# Created by 'webpack'
+/dist
+
+# For Mac OS X
+.DS_Store

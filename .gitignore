@@ -1,0 +1,10 @@
+.snowpack
+build
+node_modules
+package-lock.json
+.env
+.eslintcache
+package-lock.json
+
+# For Mac OS X
+.DS_Store
