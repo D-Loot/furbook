@@ -7,11 +7,11 @@ export default gql`
     createdAt: String!
     username: String!
     comments: [Comment]
-    commentCount: Int!
+    # commentCount: Int!
     goodBoys: [GoodBoy]
-    goodBoyCount: Int!
-    catKnips: [CatKnip]
-    catKnipCount: Int!
+    # goodBoyCount: Int!
+    catnips: [CatKnip]
+    # catKnipCount: Int!
   }
   type Comment {
     commentId: ID!
@@ -24,8 +24,8 @@ export default gql`
     createdAt: String!
     username: String!
   }
-  type CatKnip {
-    ckId: ID!
+  type Catnip {
+    cnId: ID!
     createdAt: String!
     username: String!
   }
@@ -54,7 +54,7 @@ export default gql`
     createComment(postId: String!, body: String!): Post!
     deleteComment(postId: ID!, commentId: ID!): Post!
     goodBoyPost(postId: ID!): Post!
-    likePost(postId: ID!): Post!
+    catnipPost(postId: ID!): Post!
   }
   type Subscription {
     newPost: Post!
