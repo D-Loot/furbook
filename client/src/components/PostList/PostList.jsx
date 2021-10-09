@@ -1,14 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-const PostList = ({
-  posts,
-  title,
-  showTitle = true,
-  showUsername = true,
-}) => {
+const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
   if (!posts.length) {
-    return <h3>No Posts Yet</h3>;
+    return <h3>No Posts Created</h3>;
   }
 
   return (
@@ -19,18 +14,15 @@ const PostList = ({
           <div key={post._id} className=" ">
             <h4 className=" ">
               {showUsername ? (
-                <Link
-                  className="text-light"
-                  to={`/profiles/${post.postAuthor}`}
-                >
+                <Link className=" " to={`/profiles/${post.postAuthor}`}>
                   {post.postAuthor} <br />
-                  <span style={{ fontSize: '1rem' }}>
+                  <span style={{ fontSize: "1rem" }}>
                     had made this post on {post.createdAt}
                   </span>
                 </Link>
               ) : (
                 <>
-                  <span style={{ fontSize: '1rem' }}>
+                  <span style={{ fontSize: "1rem" }}>
                     Post created on {post.createdAt}
                   </span>
                 </>
@@ -39,10 +31,7 @@ const PostList = ({
             <div className=" ">
               <p>{post.postText}</p>
             </div>
-            <Link
-              className=" "
-              to={`/posts/${post._id}`}
-            >
+            <Link className=" " to={`/posts/${post._id}`}>
               Leave a comment
             </Link>
           </div>
@@ -51,4 +40,4 @@ const PostList = ({
   );
 };
 
-export default postList;
+export default PostList;
