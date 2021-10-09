@@ -1,9 +1,8 @@
-import React from 'react';
+import React from "react";
+import Component from "../components/Component";
 
 function Home() {
-  return (
-<Component/>
-    );
+  return <Component />;
 }
 
 export default Home;
