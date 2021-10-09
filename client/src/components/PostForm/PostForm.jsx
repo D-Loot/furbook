@@ -1,7 +1,7 @@
 import { useMutation } from "@apollo/client";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// import { ADD_COMMENT } from '../../utils/mutations';
+import { ADD_COMMENT } from '../../utils/mutation.js';
 // import Auth from '../../utils/auth';
 
 const CommentForm = ({ postId }) => {

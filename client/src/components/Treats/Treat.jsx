@@ -1,13 +1,15 @@
 import { useMutation } from "@apollo/react-hooks";
-import gql from "graphql-tag";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Icon, Label } from "semantic-ui-react";
+import { ADD_TREAT } from "../../utils/mutation.js";
+import MyPopup from "../util/popup.js";
 
-// import MyPopup from '../util/MyPopup';
 
 function TreatButton({ user, post: { id, treatCount, treats } }) {
   const [treated, setTreated] = useState(false);
+
+  // const [addTreat, { error }] = useMutation(ADD_TREAT);
 
   useEffect(() => {
     if (user && treats.find((treat) => treat.username === user.username)) {
@@ -15,7 +17,7 @@ function TreatButton({ user, post: { id, treatCount, treats } }) {
     } else setTreated(false);
   }, [user, treats]);
 
-  const [treatPost] = useMutation(TREAT, {
+  const [treatPost] = useMutation(ADD_TREAT, {
     variables: { postId: id },
   });
 
@@ -37,7 +39,7 @@ function TreatButton({ user, post: { id, treatCount, treats } }) {
 
   return (
     <Button as="div" labelPosition="right" onClick={treatPost}>
-      {/* <MyPopup content={treated ? "Untreat" : "Treat"}>{treatButton}</MyPopup> */}
+      <MyPopup content={treated ? "Untreat" : "Treat"}>{treatButton}</MyPopup>
       <Label basic color="teal" pointing="left">
         {treatCount}
       </Label>
@@ -45,17 +47,17 @@ function TreatButton({ user, post: { id, treatCount, treats } }) {
   );
 }
 
-const TREAT_POST_MUTATION = gql`
-  mutation treatPost($postId: ID!) {
-    treatPost(postId: $postId) {
-      id
-      treats {
-        id
-        username
-      }
-      treatCount
-    }
-  }
-`;
+// const TREAT_POST_MUTATION = gql`
+//   mutation treatPost($postId: ID!) {
+//     treatPost(postId: $postId) {
+//       id
+//       treats {
+//         id
+//         username
+//       }
+//       treatCount
+//     }
+//   }
+// `;
 
 export default TreatButton;
