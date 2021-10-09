@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Logo from "../../assets/furbook-logo-h.png";
+import Logo from "../../assets/furbook-logo--smol.svg";
 // import Auth from '../../utils/auth';
 
 
@@ -10,10 +10,10 @@ const Header = () => {
     Auth.logout();
   };
   return (
-    <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
-      <div className="container flex-row justify-space-between-lg justify-center align-center">
+    <header className=" ">
+      <div className=" ">
         <div>
-          <Link className="text-light" to="/">
+          <Link className=" " to="/">
             <img src={Logo}></img>
           </Link>
           {/* <p className="m-0">A place for fur babies</p> */}
@@ -30,10 +30,10 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Link className="btn btn-lg btn-info m-2" to="/login">
+              <Link className=" " to="/login">
                 Login
               </Link>
-              <Link className="btn btn-lg btn-light m-2" to="/signup">
+              <Link className=" " to="/signup">
                 Signup
               </Link>
             </>

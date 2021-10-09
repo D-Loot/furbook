@@ -1,12 +1,11 @@
 import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Auth from '../../utils/auth';
+import { ADD_COMMENT } from '../../utils/mutations';
 
-// import { ADD_COMMENT } from '../../utils/mutations';
 
-// import Auth from '../../utils/auth';
-
-const CommentForm = ({ thoughtId }) => {
+const CommentForm = ({ postId }) => {
   const [commentText, setCommentText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
 
@@ -18,7 +17,7 @@ const CommentForm = ({ thoughtId }) => {
     try {
       const { data } = await addComment({
         variables: {
-          thoughtId,
+          postId,
           commentText,
           commentAuthor: Auth.getProfile().data.username,
         },
