@@ -3,3 +3,16 @@
 @tailwind utilities;
 
 /* TODO: Add any custom CSS 👇🏾. It will override 👆🏾. */
+:root {
+  --ltGray: #f2f2f2;
+  --blue: #1098f7;
+  --charcoal: #242331;
+  --lizard: #ade300;
+  --grass: #13512d;
+  /* new palette */
+  --cornflower: #8ecae6;
+  --sea: #219ebc;
+  --indigo: #023047;
+  --honey: #ffb703;
+  --orange: #fb8500;
+}
