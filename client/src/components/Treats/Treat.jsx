@@ -1,4 +1,5 @@
 import { useMutation } from "@apollo/react-hooks";
+import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Icon, Label } from "semantic-ui-react";
@@ -47,17 +48,11 @@ function TreatButton({ user, post: { id, treatCount, treats } }) {
   );
 }
 
-// const TREAT_POST_MUTATION = gql`
-//   mutation treatPost($postId: ID!) {
-//     treatPost(postId: $postId) {
-//       id
-//       treats {
-//         id
-//         username
-//       }
-//       treatCount
-//     }
-//   }
-// `;
+TreatButton.propTypes = {
+  post: PropTypes.string.isRequired,
+  user: PropTypes.string.isRequired,
+  treatCount: PropTypes.number.isRequired,
+  treats: PropTypes.string.isRequired
+}
 
 export default TreatButton;
