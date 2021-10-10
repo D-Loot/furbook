@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../assets/furbook-logo-h-smol.svg";
+import Logo from "../../assets/furbook_logo_K.svg";
 import Auth from "../../utils/auth";
+import "./header.css";
 
 const Header = () => {
   const logout = (event) => {
@@ -9,35 +10,37 @@ const Header = () => {
     Auth.logout();
   };
   return (
-    <header className=" ">
-      <div className=" ">
+    <header className="navHeader">
+      <div className="left">
         <div>
-          <Link className=" " to="/">
-            <img src={Logo}></img>
+          <Link className="logoLink" to="/">
+            <img src={Logo} className="logoImg" />
           </Link>
-          {/* <p className="m-0">A place for fur babies</p> */}
+          <p className="tagline">A place for your fur babies</p>
         </div>
-        <div>
-          {Auth.loggedIn() ? (
-            <>
-              <Link className=" " to="/profile">
-                {Auth.getProfile().data.username}'s profile
-              </Link>
-              <button className=" " onClick={logout}>
-                Logout
+      </div>
+      <div className="right">
+        {Auth.loggedIn() ? (
+          <>
+            <Link className="navBtn" to="/profile">
+              <button className="ui primary button">
+                {Auth.getProfile().data.username}&rsquo;s profile
               </button>
-            </>
-          ) : (
-            <>
-              <Link className=" " to="/login">
-                Login
-              </Link>
-              <Link className=" " to="/signup">
-                Signup
-              </Link>
-            </>
-          )}
-        </div>
+            </Link>
+            <button className="navBtn" onClick={logout}>
+              <button className="ui inverted button">Logout</button>
+            </button>
+          </>
+        ) : (
+          <>
+            <Link className="navBtn" to="/login">
+              <button className="ui primary button">Login</button>
+            </Link>
+            <Link className="navBtn" to="/signup">
+              <button className="ui primary button">Signup</button>
+            </Link>
+          </>
+        )}
       </div>
     </header>
   );
