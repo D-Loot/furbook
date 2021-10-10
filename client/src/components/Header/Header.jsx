@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../assets/furbook-logo-h-smol.svg";
+import Logo from "../../assets/furbook_logo_K.svg";
 import Auth from "../../utils/auth";
 import "./header.css";
 
@@ -14,28 +14,30 @@ const Header = () => {
       <div className="left">
         <div>
           <Link className="logoLink" to="/">
-            <img src={Logo} className="logoImg" width="200" />
+            <img src={Logo} className="logoImg" />
           </Link>
-          {/* <p className="m-0">A place for fur babies</p> */}
+          <p className="tagline">A place for your fur babies</p>
         </div>
       </div>
       <div className="right">
         {Auth.loggedIn() ? (
           <>
-            <Link className=" " to="/profile">
-              {Auth.getProfile().data.username}&rsquo;s profile
+            <Link className="navBtn" to="/profile">
+              <button className="ui primary button">
+                {Auth.getProfile().data.username}&rsquo;s profile
+              </button>
             </Link>
-            <button className=" " onClick={logout}>
-              Logout
+            <button className="navBtn" onClick={logout}>
+              <button className="ui inverted button">Logout</button>
             </button>
           </>
         ) : (
           <>
-            <Link className=" " to="/login">
-              Login
+            <Link className="navBtn" to="/login">
+              <button className="ui primary button">Login</button>
             </Link>
-            <Link className=" " to="/signup">
-              Signup
+            <Link className="navBtn" to="/signup">
+              <button className="ui primary button">Signup</button>
             </Link>
           </>
         )}
