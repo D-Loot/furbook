@@ -3,6 +3,9 @@ const { User, Post } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
+  Post: {
+    commentCount: (parent) => parent.comments.length,
+  },
   Query: {
     users: async () => {
       return User.find().populate("posts");
