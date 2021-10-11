@@ -1,9 +1,11 @@
-import { ApolloServerPluginDrainHttpServer } from "apollo-server-core";
-import { ApolloServer } from "apollo-server-express";
-import express from "express";
-import http from "http";
-import dbClient from "./db/client.js";
-import { resolvers, typeDefs } from "./graphql/index.js";
+const express = require('express');
+const { ApolloServer } = require('apollo-server-express');
+const path = require('path');
+
+const { typeDefs, resolvers } = require('./schemas');
+const { authMiddleware } = require('./utils/auth');
+
+const db = require('./config/connection');
 
 const app = express();
 
