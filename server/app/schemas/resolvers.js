@@ -17,6 +17,12 @@ const resolvers = {
     post: async (parent, { postId }) => {
       return Post.findOne({ _id: postId });
     },
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).populate('posts');
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 
   Mutation: {
