@@ -39,6 +39,7 @@ const postSchema = new Schema({
       },
     },
   ],
+  commentCount: String,
 });
 
 const Post = model("Post", postSchema);
