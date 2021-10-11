@@ -1,10 +1,11 @@
 import { useMutation } from "@apollo/client";
+import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// import { ADD_COMMENT } from '../../utils/mutations';
-// import Auth from '../../utils/auth';
+import Auth from '../../utils/auth.js';
+import { ADD_COMMENT } from '../../utils/mutation.js';
 
-const CommentForm = ({ postId }) => {
+function CommentForm({ postId }) {
   const [commentText, setCommentText] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
 
@@ -72,12 +73,16 @@ const CommentForm = ({ postId }) => {
         </>
       ) : (
         <p>
-          You need to be logged to do that. Please{" "}
+          You need to be logged. Please{" "}
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
     </div>
   );
 };
+
+CommentForm.propTypes = {
+  postId: PropTypes.string.isRequired,
+}
 
 export default CommentForm;
