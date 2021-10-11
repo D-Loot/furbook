@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Logo from "../../assets/furbook-logo--smol.svg";
+import Logo from "../../assets/furbook-logo-smol.svg";
 import Auth from '../../utils/auth';
 
 

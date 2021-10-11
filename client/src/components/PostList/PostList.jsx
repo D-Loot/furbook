@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -39,5 +40,12 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
     </div>
   );
 };
+
+PostList.propTypes = {
+  posts: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  showTitle: PropTypes.boolean.isRequired,
+  showUsername: PropTypes.boolean.isRequired
+}
 
 export default PostList;
