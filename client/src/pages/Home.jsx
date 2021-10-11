@@ -1,8 +1,8 @@
-import Component from "components/Component";
+import PostForm from "components/PostForm";
 import React from "react";
 
 function Home() {
-  return <Component />;
+  return <PostForm />;
 }
 
 export default Home;
