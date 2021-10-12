@@ -2,8 +2,9 @@ import { useMutation } from "@apollo/client";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Auth from '../../utils/auth.js';
-import { ADD_COMMENT } from '../../utils/mutation.js';
+
+import Auth from "../../utils/auth.js";
+import { ADD_COMMENT } from "../../utils/mutation.js";
 
 function CommentForm({ postId }) {
   const [commentText, setCommentText] = useState("");
@@ -79,10 +80,10 @@ function CommentForm({ postId }) {
       )}
     </div>
   );
-};
+}
 
 CommentForm.propTypes = {
   postId: PropTypes.string.isRequired,
-}
+};
 
 export default CommentForm;
