@@ -2,6 +2,7 @@ import { useMutation } from "@apollo/client";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+
 import Auth from "../../utils/auth.js";
 import { ADD_COMMENT } from "../../utils/mutation.js";
 
@@ -73,8 +74,8 @@ function CommentForm({ postId }) {
         </>
       ) : (
         <p>
-          You need to be logged. Please <Link to="/login">login</Link> or{" "}
-          <Link to="/signup">signup.</Link>
+          You need to be logged. Please{" "}
+          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
     </div>
