@@ -21,6 +21,7 @@
   "dependencies": {
     "@apollo/client": "^3.4.15",
     "@apollo/react-hooks": "^4.0.0",
+    "@heroicons/react": "^1.0.4",
     "graphql": "^15.6.0",
     "install": "^0.13.0",
     "jwt-decode": "^3.1.2",
