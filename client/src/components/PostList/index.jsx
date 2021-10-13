@@ -1,5 +1,4 @@
 // import PopImage from "components/PopImage";
-import PropTypes from "prop-types";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -44,6 +43,8 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
   );
 };
 
+// Right now the local host site will crash with the propTypes
+// If we comment this out, the site will run
 PostList.propTypes = {
   posts: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
