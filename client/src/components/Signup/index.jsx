@@ -1,13 +1,16 @@
-import { useMutation } from '@apollo/client';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Auth from '../utils/auth';
-import { LOGIN_USER } from '../utils/mutations';
+import { useMutation } from "@apollo/client";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Auth from "../../utils/auth.js";
+import { ADD_USER } from "../../utils/mutation.js";
 
-
-const Login = (props) => {
-  const [formState, setFormState] = useState({ email: '', password: '' });
-  const [login, { error, data }] = useMutation(LOGIN_USER);
+const Signup = () => {
+  const [formState, setFormState] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const [addUser, { error, data }] = useMutation(ADD_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -21,35 +24,39 @@ const Login = (props) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
+
     try {
-      const { data } = await login({
+      const { data } = await addUser({
         variables: { ...formState },
       });
 
-      Auth.login(data.login.token);
+      Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
     }
-
-    setFormState({
-      email: '',
-      password: '',
-    });
   };
 
   return (
     <main className=" ">
       <div className=" ">
         <div className="card">
-          <h4 className="card-header">Login</h4>
+          <h4 className="card-header ">Sign Up</h4>
           <div className="card-body">
             {data ? (
               <p>
-                Success! You may now head{' '}
+                Success! You may now head{" "}
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
+                <input
+                  className="form-input"
+                  placeholder="Your username"
+                  name="username"
+                  type="text"
+                  value={formState.name}
+                  onChange={handleChange}
+                />
                 <input
                   className="form-input"
                   placeholder="Your email"
@@ -68,7 +75,7 @@ const Login = (props) => {
                 />
                 <button
                   className=" "
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: "pointer" }}
                   type="submit"
                 >
                   Submit
@@ -76,11 +83,7 @@ const Login = (props) => {
               </form>
             )}
 
-            {error && (
-              <div className=" ">
-                {error.message}
-              </div>
-            )}
+            {error && <div className=" ">{error.message}</div>}
           </div>
         </div>
       </div>
@@ -88,4 +91,4 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default Signup;

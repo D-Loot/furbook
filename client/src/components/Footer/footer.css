@@ -21,8 +21,10 @@
   flex-direction: row;
 }
 
-h4 {
+.footerText {
+  font-size: 14px;
   flex-direction: row;
-  font-weight: 200 !important;
+  font-weight: 300 !important;
   font-family: "Roboto", sans-serif !important;
+  color: var(--sea);
 }

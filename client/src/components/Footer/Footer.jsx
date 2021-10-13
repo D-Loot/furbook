@@ -18,7 +18,7 @@ const Footer = () => {
             <i className="fas fa-angle-left"></i> Go Back
           </Button>
         )}
-        <h4>Made by Dan, Ashley, Gabe & Mehalet</h4>
+        <p className="footerText">Made by Dan, Ashley, Gabe & Mehalet</p>
       </div>
     </footer>
   );

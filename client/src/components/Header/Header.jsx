@@ -36,7 +36,7 @@ const Header = () => {
             <Link className="navBtn" to="/login">
               <button className="ui primary button">Login</button>
             </Link>
-            <Link className="navBtn" to="/signup">
+            <Link className="navBtn" to="/register">
               <button className="ui primary button">Signup</button>
             </Link>
           </>

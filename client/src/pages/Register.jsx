@@ -1,8 +1,8 @@
-import Component from "components/Component";
+import Signup from "components/Signup";
 import React from "react";
 
 function Register() {
-  return <Component />;
+  return <Signup />;
 }
 
 export default Register;
