@@ -8,7 +8,7 @@ function MyPopup({ content, children }) {
 
 MyPopup.propTypes = {
   content: PropTypes.string.isRequired,
-  children: PropTypes.string.isRequired
-}
+  children: PropTypes.string.isRequired,
+};
 
 export default MyPopup;

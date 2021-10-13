@@ -4,8 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Icon, Label } from "semantic-ui-react";
 import { ADD_TREAT } from "../../utils/mutation.js";
-import MyPopup from "../util/popup.js";
-
+import MyPopup from "../../utils/popup.js";
 
 function TreatButton({ user, post: { id, treatCount, treats } }) {
   const [treated, setTreated] = useState(false);
@@ -52,7 +51,7 @@ TreatButton.propTypes = {
   post: PropTypes.string.isRequired,
   user: PropTypes.string.isRequired,
   treatCount: PropTypes.number.isRequired,
-  treats: PropTypes.string.isRequired
-}
+  treats: PropTypes.string.isRequired,
+};
 
 export default TreatButton;
