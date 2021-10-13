@@ -1,7 +1,8 @@
-import Component from "components/Component";
+// import Component from "components/Component";
 import PostForm from "components/PostForm";
+import PostImage from "components/PostImage";
 import TestComp from "components/TestComp";
-import Treats from "components/Treats";
+// import Treats from "components/Treats";
 // import PostList from "components/PostList";
 import React from "react";
 
@@ -10,8 +11,9 @@ function Home() {
     <main className="wrapper">
       <PostForm />
       <TestComp />
-      <Component />
-      <Treats />
+      {/* <Component /> */}
+      <PostImage />
+      {/* <Treats /> */}
       {/* <PostList /> */}
     </main>
   );
