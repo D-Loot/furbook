@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Icon, Image } from "semantic-ui-react";
 
-const Component = () => (
+const ProfileInfo = () => (
   <Card>
     <Image
       src="https://react.semantic-ui.com/images/avatar/large/daniel.jpg"
@@ -24,4 +24,4 @@ const Component = () => (
   </Card>
 );
 
-export default Component;
+export default ProfileInfo;
