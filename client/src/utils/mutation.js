@@ -1,0 +1,73 @@
+import { gql } from "@apollo/client";
+
+export const LOGIN_USER = gql`
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
+      }
+    }
+  }
+`;
+
+export const ADD_USER = gql`
+  mutation addUser($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
+      }
+    }
+  }
+`;
+
+export const ADD_POST = gql`
+  mutation addThought($postText: String!) {
+    addPost(postText: $postText) {
+      _id
+      postText
+      postAuthor
+      createdAt
+      comments {
+        _id
+        commentText
+      }
+    }
+  }
+`;
+
+export const ADD_COMMENT = gql`
+  mutation addComment($postId: ID!, $commentText: String!) {
+    addComment(postId: $postId, commentText: $commentText) {
+      _id
+      postText
+      postAuthor
+      createdAt
+      comments {
+        _id
+        commentText
+        createdAt
+      }
+    }
+  }
+`;
+
+// Todo: Fix according to new schema
+export const ADD_TREAT = gql`
+  mutation addTreat($_id: ID!, $postId: ID!) {
+    addTreat(id: $_id, postId: $postId) {
+      _id
+      username
+      createdAt
+      post {
+        postId
+        username
+        createdAt
+        treatCount
+      }
+    }
+  }
+`;
