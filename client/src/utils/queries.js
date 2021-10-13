@@ -10,6 +10,12 @@ export const QUERY_USER = gql`
         _id
         postText
         createdAt
+        postImage {
+          _id
+          imageId
+          format
+          version
+        }
       }
     }
   }
@@ -22,6 +28,14 @@ export const QUERY_POSTS = gql`
       postText
       postAuthor
       createdAt
+      postImage {
+        _id
+        imageId
+        format
+        version
+      }
+      commentCount
+      treatCount
     }
   }
 `;
@@ -39,6 +53,14 @@ export const QUERY_SINGLE_POST = gql`
         commentAuthor
         createdAt
       }
+      postImage {
+        _id
+        imageId
+        format
+        version
+      }
+      commentCount
+      treatCount
     }
   }
 `;
@@ -55,6 +77,14 @@ export const QUERY_ME = gql`
         postAuthor
         createdAt
       }
+      postImage {
+        _id
+        imageId
+        format
+        version
+      }
+      commentCount
+      treatCount
     }
   }
 `;
