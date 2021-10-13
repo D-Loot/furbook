@@ -27,4 +27,9 @@ export default {
   buildOptions: {
     /* ... */
   },
+  env: {
+    CLOUDINARY_CLOUD_NAME: "furbook",
+    CLOUDINARY_BASE_URL: "https://res.cloudinary.com/furbook/image/upload",
+    CLOUDINARY_UPLOAD_PRESET: "furbook",
+  },
 };
