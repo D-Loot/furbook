@@ -132,13 +132,15 @@ const resolvers = {
           )
         ) {
           // if the treats array already contains the username, then remove the username from the array
+          const treat2Remove = likedPost.treats.find(
+            (treat) => treat.treatAuthor === context.user.username
+          );
           return Post.findOneAndUpdate(
             { _id: postId },
             {
               $pull: {
                 treats: {
-                  _id: treatId,
-                  treats: { treatAuthor: context.user.username },
+                  _id: treat2Remove._id,
                 },
               },
             },
