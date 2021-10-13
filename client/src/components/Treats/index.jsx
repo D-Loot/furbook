@@ -1,57 +1,32 @@
-import { useMutation } from "@apollo/react-hooks";
-import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Button, Icon, Label } from "semantic-ui-react";
-import { ADD_TREAT } from "../../utils/mutation.js";
-import MyPopup from "../../utils/popup.js";
-
-function TreatButton({ user, post: { id, treatCount, treats } }) {
-  const [treated, setTreated] = useState(false);
-
-  // const [addTreat, { error }] = useMutation(ADD_TREAT);
-
-  useEffect(() => {
-    if (user && treats.find((treat) => treat.username === user.username)) {
-      setTreated(true);
-    } else setTreated(false);
-  }, [user, treats]);
-
-  const [treatPost] = useMutation(ADD_TREAT, {
-    variables: { postId: id },
-  });
-
-  const treatButton = user ? (
-    treated ? (
-      <Button color="teal">
-        <Icon name="treat" />
-      </Button>
-    ) : (
-      <Button color="teal" basic>
-        <Icon name="treat" />
-      </Button>
-    )
-  ) : (
-    <Button as={Link} to="/login" color="teal" basic>
-      <Icon name="treat" />
-    </Button>
-  );
-
+import React, { useState } from "react";
+import { Button, Label } from "semantic-ui-react";
+const TreatBtn = () => {
+  const [counter, setCounter] = useState(0);
+  const clickedCounter = () => {
+    setCounter(counter + 1);
+    // useEffect
+  };
   return (
-    <Button as="div" labelPosition="right" onClick={treatPost}>
-      <MyPopup content={treated ? "Untreat" : "Treat"}>{treatButton}</MyPopup>
-      <Label basic color="teal" pointing="left">
-        {treatCount}
-      </Label>
-    </Button>
+    <div>
+      <Button as="div" labelPosition="right">
+        <Button onClick={clickedCounter} color="red">
+          <i className="fas fa-bone">&nbsp;&nbsp;</i>
+          Treat
+        </Button>
+        <Label as="a" basic color="red" pointing="left">
+          {counter}
+        </Label>
+      </Button>
+      {/* <Button as="div" labelPosition="right">
+        <Button basic color="blue">
+          <i className="fas fa-comment">&nbsp;&nbsp;</i>
+          Comment
+        </Button>="left">
+          2,048
+        <Label as="a" basic color="blue" pointing
+        </Label>
+      </Button> */}
+    </div>
   );
-}
-
-TreatButton.propTypes = {
-  post: PropTypes.string.isRequired,
-  user: PropTypes.string.isRequired,
-  treatCount: PropTypes.number.isRequired,
-  treats: PropTypes.string.isRequired,
 };
-
-export default TreatButton;
+export default TreatBtn;
