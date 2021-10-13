@@ -4,6 +4,7 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Post: {
+    treatCount: (parent) => parent.treats.length,
     commentCount: (parent) => parent.comments.length,
   },
   Query: {
@@ -117,6 +118,49 @@ const resolvers = {
         );
       }
       throw new AuthenticationError("You need to be logged in!");
+    },
+    treatPost: async (parent, { postId }, context) => {
+      // find the post
+      const likedPost = await Post.findOne({ _id: postId });
+
+      // check to see if the user is logged in
+      if (context.user) {
+        // find if the username is listed in the 'treats' array
+        if (
+          likedPost.treats.find(
+            (treat) => treat.treatAuthor === context.user.username
+          )
+        ) {
+          // if the treats array already contains the username, then remove the username from the array
+          return Post.findOneAndUpdate(
+            { _id: postId },
+            {
+              $pull: {
+                treats: {
+                  _id: treatId,
+                  treats: { treatAuthor: context.user.username },
+                },
+              },
+            },
+            { new: true }
+          );
+        } else {
+          // if the treats array does not already contain the username, then add the username to the array
+          return Post.findOneAndUpdate(
+            { _id: postId },
+            {
+              $addToSet: {
+                treats: { treatAuthor: context.user.username },
+              },
+            },
+            {
+              new: true,
+              runValidators: true,
+            }
+          );
+        }
+        throw new AuthenticationError("You need to be logged in!");
+      }
     },
   },
 };

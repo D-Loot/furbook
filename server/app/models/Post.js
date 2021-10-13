@@ -40,6 +40,19 @@ const postSchema = new Schema({
     },
   ],
   commentCount: String,
+  treats: [
+    {
+      treatAuthor: {
+        type: String,
+        required: true,
+      },
+      createdAt: {
+        type: Date,
+        default: Date.now,
+        get: (timestamp) => dateFormat(timestamp),
+      },
+    },
+  ],
 });
 
 const Post = model("Post", postSchema);

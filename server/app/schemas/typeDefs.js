@@ -17,6 +17,8 @@ const typeDefs = gql`
     createdAt: String
     comments: [Comment]!
     commentCount: Int!
+    treats: [Treat]!
+    treatCount: Int!
   }
 
   type Comment {
@@ -24,6 +26,12 @@ const typeDefs = gql`
     commentText: String
     commentAuthor: String
     createdAt: String
+  }
+
+  type Treat {
+    _id: ID
+    createdAt: String
+    treatAuthor: String
   }
 
   type Auth {
@@ -46,6 +54,7 @@ const typeDefs = gql`
     addComment(postId: ID!, commentText: String!): Post
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
+    treatPost(postId: ID!): Post
   }
 `;
 
