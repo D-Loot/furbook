@@ -14,9 +14,6 @@ export default {
 
     const { name } = file;
 
-    // TODO: Adjust this to whatever you want to name your uploaded files
-    // ⚠️ If you include `/` this will create a folder in your Cloudinary account
-    // Slice extension off of file name (or just don't bother with the file name)
     fd.append("public_id", `${userId}-${name.slice(0, name.lastIndexOf("."))}`);
 
     return ky
