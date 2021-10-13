@@ -1,6 +1,6 @@
 // import Component from "components/Component";
 import PostForm from "components/PostForm";
-import PostImage from "components/PostImage";
+// import PostImage from "components/PostImage";
 import TestComp from "components/TestComp";
 // import Treats from "components/Treats";
 // import PostList from "components/PostList";
@@ -12,7 +12,7 @@ function Home() {
       <PostForm />
       <TestComp />
       {/* <Component /> */}
-      <PostImage />
+      {/* <PostImage /> */}
       {/* <Treats /> */}
       {/* <PostList /> */}
     </main>
