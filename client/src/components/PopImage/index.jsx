@@ -2,9 +2,9 @@ import React from "react";
 import config from "./utils/config";
 
 const PopImage = () => {
-  return (
-    const [images, setImages] = React.useState([]);
+  const [images, setImages] = React.useState([]);
 
+  return (
     {images.map(({ format, id, version }) => (
     <img
       key={id}
