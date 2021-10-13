@@ -22,3 +22,7 @@
 body {
   font-family: "Roboto", sans-serif;
 }
+
+.innerWrapper {
+  padding: 2%;
+}
