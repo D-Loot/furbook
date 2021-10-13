@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Icon, Label } from "semantic-ui-react";
 import { ADD_TREAT } from "../../utils/mutation.js";
-import MyPopup from "../../utils/popup.js";
 
 function TreatButton({ user, post: { id, treatCount, treats } }) {
   const [treated, setTreated] = useState(false);
@@ -39,7 +38,6 @@ function TreatButton({ user, post: { id, treatCount, treats } }) {
 
   return (
     <Button as="div" labelPosition="right" onClick={treatPost}>
-      <MyPopup content={treated ? "Untreat" : "Treat"}>{treatButton}</MyPopup>
       <Label basic color="teal" pointing="left">
         {treatCount}
       </Label>
