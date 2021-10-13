@@ -11,7 +11,7 @@ const typeDefs = gql`
 
   type Post {
     _id: ID
-    postImage: String
+    postImage: Image
     postText: String
     postAuthor: String
     createdAt: String
@@ -19,6 +19,19 @@ const typeDefs = gql`
     commentCount: Int!
     treats: [Treat]!
     treatCount: Int!
+  }
+
+  type Image {
+    _id: ID
+    imageId: String
+    format: String
+    version: String
+  }
+
+  input InputImage {
+    imageId: String
+    format: String
+    version: String
   }
 
   type Comment {
@@ -50,7 +63,7 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addPost(postImage: String!, postText: String!): Post
+    addPost(postImage: InputImage, postText: String!): Post
     addComment(postId: ID!, commentText: String!): Post
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
