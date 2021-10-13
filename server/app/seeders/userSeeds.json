@@ -1,0 +1,22 @@
+[
+  {
+    "username": "Mario Mario",
+    "email": "mario.mario@gmail.com",
+    "password": "qwerty12345"
+  },
+  {
+    "username": "Luigi Mario",
+    "email": "luigi.mario@gmail.com",
+    "password": "qwerty12345"
+  },
+  {
+    "username": "Princess Peach",
+    "email": "pp@gmail.com",
+    "password": "qwerty12345"
+  },
+  {
+    "username": "Yoshi",
+    "email": "Yoshi@gmail.com",
+    "password": "qwerty12345"
+  }
+]
