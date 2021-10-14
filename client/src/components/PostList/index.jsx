@@ -1,4 +1,4 @@
-// import PopImage from "components/PopImage";
+import PopImage from "components/PopImage";
 import PropTypes from "prop-types";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -31,7 +31,7 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
               )}
             </h4>
             {/* PopImage component not working */}
-            {/* <PopImage /> */}
+            <PopImage />
             <div className=" ">
               <p>{post.postText}</p>
             </div>
