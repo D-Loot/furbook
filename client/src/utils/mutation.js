@@ -25,8 +25,21 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addThought($postText: String!) {
-    addPost(postText: $postText) {
+  mutation addPost(
+    $postText: String!,
+    $postImage: {
+      $imageId: String!,
+      $format: String!,
+      $version: String!,
+  }) {
+    addPost(
+      postImage: {
+        imageId: $imageId
+        format: $format
+        version: $version
+      }
+      postText: $postText
+      ) {
       _id
       postText
       postAuthor
@@ -34,6 +47,11 @@ export const ADD_POST = gql`
       comments {
         _id
         commentText
+      }
+      postImage {
+        imageId
+        format
+        version
       }
     }
   }
@@ -55,19 +73,16 @@ export const ADD_COMMENT = gql`
   }
 `;
 
-// Todo: Fix according to new schema
 export const ADD_TREAT = gql`
-  mutation addTreat($_id: ID!, $postId: ID!) {
-    addTreat(id: $_id, postId: $postId) {
-      _id
-      username
-      createdAt
-      post {
-        postId
-        username
+  mutation addTreat($postId: ID!) {
+    addTreat(postId: $postId) {
+      postId
+      treats {
+        _id
         createdAt
-        treatCount
+        treatAuthor
       }
+      treatCount
     }
   }
 `;
