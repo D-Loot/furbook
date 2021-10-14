@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Auth from "../../utils/auth.js";
 import { ADD_COMMENT } from "../../utils/mutation.js";
 
-function CommentForm({ postId }) {
+function PostForm({ postId }) {
   const [commentText, setCommentText] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
 
@@ -81,8 +81,8 @@ function CommentForm({ postId }) {
   );
 }
 
-CommentForm.propTypes = {
+PostForm.propTypes = {
   postId: PropTypes.string.isRequired,
 };
 
-export default CommentForm;
+export default PostForm;

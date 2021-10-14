@@ -1,4 +1,5 @@
 import { useMutation } from "@apollo/client";
+import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
@@ -81,6 +82,10 @@ const CommentForm = ({ postId }) => {
       )}
     </div>
   );
+};
+
+CommentForm.propTypes = {
+  postId: PropTypes.string.isRequired,
 };
 
 export default CommentForm;
