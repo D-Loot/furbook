@@ -8,7 +8,6 @@ const PopImage = () => {
     <img
       key={id}
       src={`${config.cloudinary.baseURL}/${config.cloudinary.transformation}/v${version}/${id}.${format}`}
-      // TODO: Add a proper alt tag ♿
       alt="post-image"
       width="500"
     />

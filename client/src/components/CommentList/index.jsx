@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from "react";
 
 const CommentList = ({ comments = [] }) => {
@@ -31,6 +32,10 @@ const CommentList = ({ comments = [] }) => {
       </div>
     </>
   );
+};
+
+CommentList.propTypes = {
+  comments: PropTypes.string.isRequired,
 };
 
 export default CommentList;

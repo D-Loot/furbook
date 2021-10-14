@@ -1,7 +1,6 @@
 import { useQuery } from "@apollo/client";
 import PostForm from "components/PostForm";
 import PostList from "components/PostList";
-import ProfileInfo from "components/ProfileInfo";
 import React from "react";
 import { Redirect, useParams } from "react-router-dom";
 import Auth from "../utils/auth";
@@ -39,7 +38,7 @@ const Profile = () => {
         <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
           Viewing {userParam ? `${user.username}'s` : "your"} profile.
         </h2>
-        <ProfileInfo />
+
         <div className="col-12 col-md-10 mb-5">
           <PostList
             posts={user.posts}

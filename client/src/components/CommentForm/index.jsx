@@ -76,7 +76,7 @@ const CommentForm = ({ postId }) => {
         </>
       ) : (
         <p>
-          You need to be logged in to share your thoughts. Please{" "}
+          You need to be logged in to share your comments. Please{" "}
           <Link to="/login">login</Link> or <Link to="/register">signup.</Link>
         </p>
       )}
