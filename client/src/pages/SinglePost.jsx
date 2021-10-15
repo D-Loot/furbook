@@ -23,7 +23,7 @@ const SinglePost = () => {
   return (
     <div className="my-3">
       <h3 className="card-header bg-dark text-light p-2 m-0">
-        {post.thoughtAuthor} <br />
+        {post.postAuthor} <br />
         <span style={{ fontSize: "1rem" }}>
           had this thought on {post.createdAt}
         </span>
@@ -46,7 +46,7 @@ const SinglePost = () => {
         <CommentList comments={post.comments} />
       </div>
       <div className="m-3 p-4" style={{ border: "1px dotted #1a1a1a" }}>
-        <CommentForm thoughtId={post._id} />
+        <CommentForm postId={post._id} />
       </div>
     </div>
   );
