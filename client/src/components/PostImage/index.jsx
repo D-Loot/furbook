@@ -20,11 +20,12 @@ const PostImage = () => {
       Auth.getProfile().data.username
       // TODO: Replace this with the user's id from Context
       // uuid()
+    ).then(({ format, public_id: imageId, version }) => {
       setImages([
         ...images,
 
         // TODO: Send this info ℹ️ to the backend
-        { format, id, version },
+        { format, imageId, version },
       ]);
     });
   };
@@ -38,12 +39,12 @@ const PostImage = () => {
         accept="image/*"
         ref={inputRef}
       />
-      {images.map(({ format, id, version }) => (
+      {images.map(({ format, imageId, version }) => (
         <img
-          key={id}
-          src={`${config.cloudinary.baseURL}/${config.cloudinary.transformation}/v${version}/${id}.${format}`}
+          key={imageId}
+          src={`${config.cloudinary.baseURL}/${config.cloudinary.transformation}/v${version}/${imageId}.${format}`}
           // TODO: Add a proper alt tag ♿
-          alt=""
+          alt="a proper alt tag"
           width="500"
         />
       ))}
