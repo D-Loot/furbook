@@ -13,13 +13,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "concurrently": "^5.1.0"
-  },
   "dependencies": {
     "@apollo/react-hooks": "^4.0.0",
     "prop-types": "^15.7.2",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.0.4"
+    "semantic-ui-react": "^2.0.4",
+    "concurrently": "^5.1.0"
   }
 }
