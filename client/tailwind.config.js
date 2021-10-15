@@ -18,6 +18,7 @@ module.exports = {
       grass: "#13512d",
       brightBlue: "#1098f7",
       gray: "#cccccc",
+      medGray: "#a7a8aa",
     },
   },
 };
