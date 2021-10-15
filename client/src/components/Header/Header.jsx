@@ -22,7 +22,7 @@ const Header = () => {
       <div className="right">
         {Auth.loggedIn() ? (
           <>
-            <Link className="navBtn" to="/profile">
+            <Link className="navBtn" to="/me">
               <button className="ui primary button">
                 {Auth.getProfile().data.username}&rsquo;s profile
               </button>
