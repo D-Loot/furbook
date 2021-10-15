@@ -2,13 +2,19 @@ import { useMutation } from "@apollo/client";
 // import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Auth from "../../utils/auth.js";
-import { ADD_POST } from "../../utils/mutation.js";
+import Auth from "../../utils/auth";
+import { ADD_POST } from "../../utils/mutation";
 import { QUERY_ME, QUERY_POSTS } from "../../utils/queries";
+
+import { APIService } from "../../services";
+import config from "../../utils/config";
 
 function PostForm() {
   const [postText, setPostText] = useState("");
+  // const [postImage, setPostImage] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
+  const [postImage, setImage] = React.useState([]);
+  const inputRef = React.useRef();
 
   const [addPost, { error }] = useMutation(ADD_POST, {
     update(cache, { data: { addPost } }) {
@@ -17,7 +23,7 @@ function PostForm() {
 
         cache.writeQuery({
           query: QUERY_POSTS,
-          data: { thoughts: [addPost, ...posts] },
+          data: { posts: [addPost, ...posts] },
         });
       } catch (e) {
         console.error(e);
@@ -36,20 +42,22 @@ function PostForm() {
     event.preventDefault();
 
     try {
+      const object2 = { ...postImage, version: postImage.version.toString() };
       const { data } = await addPost({
         variables: {
+          postImage: object2,
           postText,
-          postAuthor: Auth.getProfile().data.username,
         },
       });
 
       setPostText("");
+      setImage("");
     } catch (err) {
       console.error(err);
     }
   };
 
-  const handleChange = (event) => {
+  const handleTextChange = (event) => {
     const { name, value } = event.target;
 
     if (name === "postText" && value.length <= 280) {
@@ -58,12 +66,41 @@ function PostForm() {
     }
   };
 
+  const handleImageChange = async (event) => {
+    // Get the file from the input before clearing it
+    const file = event.target.files[0];
+
+    inputRef.current.value = "";
+    APIService.create(
+      file,
+      Auth.getProfile().data.username
+      // TODO: Replace this with the user's id from Context
+      // uuid()
+    ).then(({ format, public_id: imageId, version }) => {
+      setImage(
+        // TODO: Send this info ℹ️ to the backend
+        { format, imageId, version }
+      );
+    });
+  };
+
   return (
     <div>
       <h4>Share your pet!</h4>
 
       {Auth.loggedIn() ? (
         <>
+          {
+            <img
+              key={postImage.imageId}
+              src={`${config.cloudinary.baseURL}/${config.cloudinary.transformation}/v${postImage.version}/${postImage.imageId}.${postImage.format}`}
+              // /TODO: Add a proper alt tag ♿
+              alt="a proper alt tag"
+              width="500"
+              // eslint-disable-next-line no-return-assign
+              onError={(event) => (event.target.style.display = "none")}
+            />
+          }
           <p
             className={`m-0 ${
               characterCount === 280 || error ? "text-danger" : ""
@@ -73,6 +110,12 @@ function PostForm() {
             {error && <span className=" ">{error.message}</span>}
           </p>
           <form className=" " onSubmit={handleFormSubmit}>
+            <input
+              type="file"
+              onChange={handleImageChange}
+              accept="image/*"
+              ref={inputRef}
+            />
             <div className=" ">
               <textarea
                 name="postText"
@@ -80,7 +123,7 @@ function PostForm() {
                 value={postText}
                 className=" "
                 style={{ lineHeight: "1.5", resize: "vertical" }}
-                onChange={handleChange}
+                onChange={handleTextChange}
               ></textarea>
             </div>
 
