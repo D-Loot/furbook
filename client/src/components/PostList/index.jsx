@@ -2,6 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import config from "../../utils/config";
+import "./postList.css";
 
 const PostList = ({ posts, username = true }) => {
   if (!posts.length) {
@@ -9,21 +10,24 @@ const PostList = ({ posts, username = true }) => {
   }
   console.log(posts);
   return (
-    <div>
+    <div className="allPosts">
       {posts &&
         posts.map((post) => (
-          <div key={post._id} className=" ">
-            <h4 className=" ">
+          <div key={post._id} className="userList">
+            <h4>
               {username ? (
-                <Link className=" " to={`/profiles/${post.postAuthor}`}>
-                  {post.postAuthor} <br />
-                  <span style={{ fontSize: "1rem" }}>
-                    Post created on {post.createdAt}
-                  </span>
-                </Link>
+                <div className="eaUser">
+                  <Link to={`/profiles/${post.postAuthor}`}>
+                    <span className="furUser">{post.postAuthor} </span>
+                    <br />
+                    <span className="created">
+                      Post created on {post.createdAt}
+                    </span>
+                  </Link>
+                </div>
               ) : (
                 <>
-                  <span style={{ fontSize: "1rem" }}>
+                  <span className="created">
                     Post created on {post.createdAt}
                   </span>
                 </>
@@ -42,12 +46,14 @@ const PostList = ({ posts, username = true }) => {
             }
             {/* PopImage component not working */}
             {/* <PopImage /> */}
-            <div className=" ">
+            <div className="postTxt">
               <p>{post.postText}</p>
             </div>
-            <Link className=" " to={`/posts/${post._id}`}>
-              Leave a comment
-            </Link>
+            <div className="commentBtn">
+              <Link to={`/posts/${post._id}`}>
+                <button className="ui button olive">Leave a comment</button>
+              </Link>
+            </div>
           </div>
         ))}
     </div>

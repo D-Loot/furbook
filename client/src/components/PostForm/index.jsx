@@ -2,12 +2,12 @@ import { useMutation } from "@apollo/client";
 // import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { APIService } from "../../services";
 import Auth from "../../utils/auth";
+import config from "../../utils/config";
 import { ADD_POST } from "../../utils/mutation";
 import { QUERY_ME, QUERY_POSTS } from "../../utils/queries";
-
-import { APIService } from "../../services";
-import config from "../../utils/config";
+import "./postForm.css";
 
 function PostForm() {
   const [postText, setPostText] = useState("");
@@ -85,8 +85,8 @@ function PostForm() {
   };
 
   return (
-    <div>
-      <h4>Share your pet!</h4>
+    <div className="post-form">
+      <h4 className="share">Share your pet!</h4>
 
       {Auth.loggedIn() ? (
         <>
@@ -96,27 +96,30 @@ function PostForm() {
               src={`${config.cloudinary.baseURL}/${config.cloudinary.transformation}/v${postImage.version}/${postImage.imageId}.${postImage.format}`}
               // /TODO: Add a proper alt tag ♿
               alt="a proper alt tag"
-              width="500"
+              width="300"
               // eslint-disable-next-line no-return-assign
               onError={(event) => (event.target.style.display = "none")}
             />
           }
           <p
-            className={`m-0 ${
+            className={`m-0 text-xs text-brightBlue ${
               characterCount === 280 || error ? "text-danger" : ""
             }`}
           >
             Character Count: {characterCount}/280
             {error && <span className=" ">{error.message}</span>}
           </p>
-          <form className=" " onSubmit={handleFormSubmit}>
-            <input
-              type="file"
-              onChange={handleImageChange}
-              accept="image/*"
-              ref={inputRef}
-            />
-            <div className=" ">
+          <form className="" onSubmit={handleFormSubmit}>
+            <label className="uploadBtn">
+              Upload Image
+              <input
+                type="file"
+                onChange={handleImageChange}
+                accept="image/*"
+                ref={inputRef}
+              />
+            </label>
+            <div className="ui form mb-3">
               <textarea
                 name="postText"
                 placeholder="Add your post..."
@@ -127,8 +130,8 @@ function PostForm() {
               ></textarea>
             </div>
 
-            <div className=" ">
-              <button className=" " type="submit">
+            <div>
+              <button className="ui button primary" type="submit">
                 Add Post
               </button>
             </div>

@@ -67,7 +67,7 @@ function App() {
               <SinglePost />
             </Route>
           </Container>
-          <Footer />
+          <Footer className="footer" />
         </Container>
       </Router>
     </ApolloProvider>

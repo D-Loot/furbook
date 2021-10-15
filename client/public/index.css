@@ -25,4 +25,10 @@ body {
 
 .innerWrapper {
   padding: 2%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.footer {
+  margin-top: 50px;
 }
