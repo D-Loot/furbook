@@ -1,4 +1,5 @@
 {
+  "proxy": "http://localhost:3001/",
   "scripts": {
     "start": "snowpack dev",
     "build": "snowpack build"
