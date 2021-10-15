@@ -39,7 +39,7 @@ const PostList = ({ posts, username = true }) => {
                 src={`${config.cloudinary.baseURL}/${config.cloudinary.transformation}/v${post.postImage.version}/${post.postImage.imageId}.${post.postImage.format}`}
                 // /TODO: Add a proper alt tag ♿
                 alt="a proper alt tag"
-                width="500"
+                width="300"
                 // eslint-disable-next-line no-return-assign
                 onError={(event) => (event.target.style.display = "none")}
               />
