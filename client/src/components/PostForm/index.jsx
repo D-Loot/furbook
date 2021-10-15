@@ -1,0 +1,152 @@
+import { useMutation } from "@apollo/client";
+// import PropTypes from "prop-types";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Auth from "../../utils/auth";
+import { ADD_POST } from "../../utils/mutation";
+import { QUERY_ME, QUERY_POSTS } from "../../utils/queries";
+
+import { APIService } from "../../services";
+import config from "../../utils/config";
+
+function PostForm() {
+  const [postText, setPostText] = useState("");
+  // const [postImage, setPostImage] = useState("");
+  const [characterCount, setCharacterCount] = useState(0);
+  const [postImage, setImage] = React.useState([]);
+  const inputRef = React.useRef();
+
+  const [addPost, { error }] = useMutation(ADD_POST, {
+    update(cache, { data: { addPost } }) {
+      try {
+        const { posts } = cache.readQuery({ query: QUERY_POSTS });
+
+        cache.writeQuery({
+          query: QUERY_POSTS,
+          data: { posts: [addPost, ...posts] },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+
+      // update me object's cache
+      const { me } = cache.readQuery({ query: QUERY_ME });
+      cache.writeQuery({
+        query: QUERY_ME,
+        data: { me: { ...me, posts: [...me.posts, addPost] } },
+      });
+    },
+  });
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const object2 = { ...postImage, version: postImage.version.toString() };
+      const { data } = await addPost({
+        variables: {
+          postImage: object2,
+          postText,
+        },
+      });
+
+      setPostText("");
+      setImage("");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleTextChange = (event) => {
+    const { name, value } = event.target;
+
+    if (name === "postText" && value.length <= 280) {
+      setPostText(value);
+      setCharacterCount(value.length);
+    }
+  };
+
+  const handleImageChange = async (event) => {
+    // Get the file from the input before clearing it
+    const file = event.target.files[0];
+
+    inputRef.current.value = "";
+    APIService.create(
+      file,
+      Auth.getProfile().data.username
+      // TODO: Replace this with the user's id from Context
+      // uuid()
+    ).then(({ format, public_id: imageId, version }) => {
+      setImage(
+        // TODO: Send this info ℹ️ to the backend
+        { format, imageId, version }
+      );
+    });
+  };
+
+  return (
+    <div>
+      <h4>Share your pet!</h4>
+
+      {Auth.loggedIn() ? (
+        <>
+          {
+            <img
+              key={postImage.imageId}
+              src={`${config.cloudinary.baseURL}/${config.cloudinary.transformation}/v${postImage.version}/${postImage.imageId}.${postImage.format}`}
+              // /TODO: Add a proper alt tag ♿
+              alt="a proper alt tag"
+              width="500"
+              // eslint-disable-next-line no-return-assign
+              onError={(event) => (event.target.style.display = "none")}
+            />
+          }
+          <p
+            className={`m-0 ${
+              characterCount === 280 || error ? "text-danger" : ""
+            }`}
+          >
+            Character Count: {characterCount}/280
+            {error && <span className=" ">{error.message}</span>}
+          </p>
+          <form className=" " onSubmit={handleFormSubmit}>
+            <input
+              type="file"
+              onChange={handleImageChange}
+              accept="image/*"
+              ref={inputRef}
+            />
+            <div className=" ">
+              <textarea
+                name="postText"
+                placeholder="Add your post..."
+                value={postText}
+                className=" "
+                style={{ lineHeight: "1.5", resize: "vertical" }}
+                onChange={handleTextChange}
+              ></textarea>
+            </div>
+
+            <div className=" ">
+              <button className=" " type="submit">
+                Add Post
+              </button>
+            </div>
+          </form>
+        </>
+      ) : (
+        <p>
+          You need to be logged. Please <Link to="/login">login</Link> or{" "}
+          <Link to="/signup">signup.</Link>
+        </p>
+      )}
+    </div>
+  );
+}
+
+// PostForm.propTypes = {
+//   // postId: PropTypes.string.isRequired,
+//   postId: PropTypes.string.isRequired,
+// };
+
+export default PostForm;

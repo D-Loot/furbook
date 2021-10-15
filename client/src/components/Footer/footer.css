@@ -1,0 +1,30 @@
+.footer {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.footerWrap {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  padding: 2%;
+  width: 100%;
+  background-color: var(--alabaster);
+}
+#backBtn {
+  flex-direction: row;
+}
+
+.footerText {
+  font-size: 14px;
+  flex-direction: row;
+  font-weight: 300 !important;
+  font-family: "Roboto", sans-serif !important;
+  color: var(--sea);
+}

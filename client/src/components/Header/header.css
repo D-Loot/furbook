@@ -1,0 +1,43 @@
+.navHeader {
+  background-color: var(--indigo);
+  padding: 3%;
+  display: flex;
+  flex-wrap: wrap;
+  background-image: url("https://res.cloudinary.com/dxyv6bnjd/image/upload/v1633897993/bootcamp/grassFur_lozk82.svg");
+  background-position: left bottom;
+  background-repeat: repeat-x;
+}
+
+.logoImg {
+  filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(266deg)
+    brightness(103%) contrast(102%);
+  width: 350px;
+  display: flex;
+}
+
+.tagline {
+  text-align: center;
+  color: var(--lizard);
+  font-size: 20px;
+  margin: 20px 0;
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+.left {
+  display: flex;
+  flex: 0.6;
+  justify-content: flex-end;
+  align-items: center;
+  /* Change to mobile below */
+  /* padding-bottom: 20px; */
+}
+
+.right {
+  display: flex;
+  flex: 0.4;
+  gap: 10px;
+  justify-content: flex-end;
+  align-items: center;
+}

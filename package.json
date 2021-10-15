@@ -1,0 +1,23 @@
+{
+  "name": "furbook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/app/index.js",
+  "scripts": {
+    "start": "node server/app/index.js",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/react-hooks": "^4.0.0",
+    "prop-types": "^15.7.2",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.4",
+    "concurrently": "^5.1.0"
+  }
+}

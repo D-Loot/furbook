@@ -1,0 +1,38 @@
+[
+  {
+    "postImage": {
+      "imageId": "123",
+      "format": "png",
+      "version": "234"
+    },
+    "postText": "Someone ate all of my treats",
+    "postAuthor": "Mario Mario"
+  },
+  {
+    "postImage": {
+      "imageId": "123",
+      "format": "png",
+      "version": "234"
+    },
+    "postText": "Someone ate all of my treats",
+    "postAuthor": "Luigi Mario"
+  },
+  {
+    "postImage": {
+      "imageId": "123",
+      "format": "png",
+      "version": "234"
+    },
+    "postText": "He can fly!",
+    "postAuthor": "Princess Peach"
+  },
+  {
+    "postImage": {
+      "imageId": "123",
+      "format": "png",
+      "version": "234"
+    },
+    "postText": "Who's your favorite?",
+    "postAuthor": "Yoshi"
+  }
+]
