@@ -18,7 +18,7 @@ const PostList = ({ posts, username = true }) => {
                 <Link className=" " to={`/profiles/${post.postAuthor}`}>
                   {post.postAuthor} <br />
                   <span style={{ fontSize: "1rem" }}>
-                    had made this post on {post.createdAt}
+                    Post created on {post.createdAt}
                   </span>
                 </Link>
               ) : (
