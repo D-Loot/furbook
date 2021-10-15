@@ -2,12 +2,10 @@ import { useMutation } from "@apollo/client";
 // import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Auth from "../../utils/auth";
-import { ADD_POST } from "../../utils/mutation";
-import { QUERY_ME, QUERY_POSTS } from "../../utils/queries";
-
 import { APIService } from "../../services";
+import Auth from "../../utils/auth";
 import config from "../../utils/config";
+import { ADD_POST } from "../../utils/mutation";
 
 function PostForm() {
   const [postText, setPostText] = useState("");
@@ -16,27 +14,7 @@ function PostForm() {
   const [postImage, setImage] = React.useState([]);
   const inputRef = React.useRef();
 
-  const [addPost, { error }] = useMutation(ADD_POST, {
-    update(cache, { data: { addPost } }) {
-      try {
-        const { posts } = cache.readQuery({ query: QUERY_POSTS });
-
-        cache.writeQuery({
-          query: QUERY_POSTS,
-          data: { posts: [addPost, ...posts] },
-        });
-      } catch (e) {
-        console.error(e);
-      }
-
-      // update me object's cache
-      const { me } = cache.readQuery({ query: QUERY_ME });
-      cache.writeQuery({
-        query: QUERY_ME,
-        data: { me: { ...me, posts: [...me.posts, addPost] } },
-      });
-    },
-  });
+  const [addPost, { error }] = useMutation(ADD_POST);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
