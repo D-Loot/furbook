@@ -14,7 +14,9 @@ function PostForm() {
   const [postImage, setImage] = React.useState([]);
   const inputRef = React.useRef();
 
-  const [addPost, { error }] = useMutation(ADD_POST);
+  const [addPost, { error }] = useMutation(ADD_POST, {
+    refetchQueries: ["getPosts"],
+  });
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
