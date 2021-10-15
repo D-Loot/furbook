@@ -1,7 +1,9 @@
 import React from "react";
-import { v4 as uuid } from "uuid";
+// import { v4 as uuid } from "uuid";
 import { APIService } from "../../services";
 import config from "../../utils/config";
+
+import Auth from "../../utils/auth.js";
 
 const PostImage = () => {
   // Array of strings - ids of images on cloudinary
@@ -15,10 +17,9 @@ const PostImage = () => {
     inputRef.current.value = "";
     APIService.create(
       file,
-
+      Auth.getProfile().data.username
       // TODO: Replace this with the user's id from Context
-      uuid()
-    ).then(({ format, public_id: id, version }) => {
+      // uuid()
       setImages([
         ...images,
 
