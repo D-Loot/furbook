@@ -45,3 +45,11 @@ body {
   width: 80%;
   margin: auto;
 }
+
+.profileHL {
+  font-size: 24px;
+  font-family: "Roboto", sans-serif;
+  color: var(--blue);
+  font-weight: 400;
+  margin: 2%;
+}
