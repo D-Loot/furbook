@@ -1,4 +1,4 @@
-import config from "@app/utils/config";
+import config from "../utils/config";
 import ky from "ky";
 
 const BASE_URL = `https://api.cloudinary.com/v1_1/${config.cloudinary.cloudName}/upload`;
