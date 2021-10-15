@@ -49,8 +49,8 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
 PostList.propTypes = {
   posts: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  showTitle: PropTypes.boolean.isRequired,
-  showUsername: PropTypes.boolean.isRequired,
+  showTitle: PropTypes.string.isRequired,
+  showUsername: PropTypes.string.isRequired,
 };
 
 export default PostList;
