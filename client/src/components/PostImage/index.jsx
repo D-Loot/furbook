@@ -1,7 +1,7 @@
 import React from "react";
 import { v4 as uuid } from "uuid";
-import { APIService } from "./services";
-import config from "./utils/config";
+import { APIService } from "../../services";
+import config from "../../utils/config";
 
 const PostImage = () => {
   // Array of strings - ids of images on cloudinary
