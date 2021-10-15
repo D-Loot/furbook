@@ -1,7 +1,9 @@
 // import PopImage from "components/PopImage";
+import Treats from "components/Treats";
 import React from "react";
 import { Link } from "react-router-dom";
 import config from "../../utils/config";
+import "./postList.css";
 
 const PostList = ({ posts, username = true }) => {
   if (!posts.length) {
@@ -9,21 +11,24 @@ const PostList = ({ posts, username = true }) => {
   }
   console.log(posts);
   return (
-    <div>
+    <div className="allPosts">
       {posts &&
         posts.map((post) => (
-          <div key={post._id} className=" ">
-            <h4 className=" ">
+          <div key={post._id} className="userList">
+            <h4>
               {username ? (
-                <Link className=" " to={`/profiles/${post.postAuthor}`}>
-                  {post.postAuthor} <br />
-                  <span style={{ fontSize: "1rem" }}>
-                    had made this post on {post.createdAt}
-                  </span>
-                </Link>
+                <div className="eaUser">
+                  <Link to={`/profiles/${post.postAuthor}`}>
+                    <span className="furUser">{post.postAuthor} </span>
+                    <br />
+                    <span className="created">
+                      Post created on {post.createdAt}
+                    </span>
+                  </Link>
+                </div>
               ) : (
                 <>
-                  <span style={{ fontSize: "1rem" }}>
+                  <span className="created">
                     Post created on {post.createdAt}
                   </span>
                 </>
@@ -35,19 +40,24 @@ const PostList = ({ posts, username = true }) => {
                 src={`${config.cloudinary.baseURL}/${config.cloudinary.transformation}/v${post.postImage.version}/${post.postImage.imageId}.${post.postImage.format}`}
                 // /TODO: Add a proper alt tag ♿
                 alt="a proper alt tag"
-                width="500"
+                width="300"
                 // eslint-disable-next-line no-return-assign
                 onError={(event) => (event.target.style.display = "none")}
               />
             }
             {/* PopImage component not working */}
             {/* <PopImage /> */}
-            <div className=" ">
+            <div className="postTxt">
               <p>{post.postText}</p>
             </div>
-            <Link className=" " to={`/posts/${post._id}`}>
-              Leave a comment
-            </Link>
+            <div className="commentBtn">
+              <Link to={`/posts/${post._id}`}>
+                <button className="ui button olive">Leave a comment</button>
+              </Link>
+            </div>
+            <div className="treatBtn">
+              <Treats />
+            </div>
           </div>
         ))}
     </div>

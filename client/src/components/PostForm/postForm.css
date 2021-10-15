@@ -1,0 +1,45 @@
+.uploadBtn {
+  font-size: 14px;
+  display: inline-block;
+  padding: 8px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: #a7a8aa;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.share-pet {
+  font-size: 34px;
+  font-family: "Roboto", sans-serif;
+  color: var(--blue);
+  font-weight: 100;
+  margin-top: 20px;
+}
+
+.post-form {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.log-in {
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  color: var(--charcoal);
+  font-weight: 500;
+}
+
+.log-in a {
+  color: var(--blue);
+}
