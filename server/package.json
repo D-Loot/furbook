@@ -3,8 +3,7 @@
   "private": true,
   "main": "app/index.js",
   "scripts": {
-    "start": "node app/index.js",
-    "watch": "nodemon --watch app",
+    "start": "nodemon -I --watch app",
     "seed": "node app/seeders/seed.js"
   },
   "dependencies": {
