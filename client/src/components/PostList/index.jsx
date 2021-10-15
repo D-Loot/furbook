@@ -1,4 +1,5 @@
 // import PopImage from "components/PopImage";
+import Treats from "components/Treats";
 import React from "react";
 import { Link } from "react-router-dom";
 import config from "../../utils/config";
@@ -53,6 +54,9 @@ const PostList = ({ posts, username = true }) => {
               <Link to={`/posts/${post._id}`}>
                 <button className="ui button olive">Leave a comment</button>
               </Link>
+            </div>
+            <div className="treatBtn">
+              <Treats />
             </div>
           </div>
         ))}
