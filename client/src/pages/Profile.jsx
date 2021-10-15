@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import PostForm from "components/PostForm";
+// import PostForm from "components/PostForm";
 import PostList from "components/PostList";
 import React from "react";
 import { Redirect, useParams } from "react-router-dom";
@@ -43,8 +43,8 @@ const Profile = () => {
           <PostList
             posts={user.posts}
             title={`${user.username}'s posts...`}
-            showTitle={false}
-            showUsername={false}
+            showTitle={true}
+            showUsername={true}
           />
         </div>
         {!userParam && (
@@ -52,7 +52,7 @@ const Profile = () => {
             className="col-12 col-md-10 mb-3 p-3"
             style={{ border: "1px dotted #1a1a1a" }}
           >
-            <PostForm />
+            {/* <PostForm /> */}
           </div>
         )}
       </div>
