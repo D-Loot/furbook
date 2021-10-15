@@ -1,29 +1,28 @@
 import { useMutation } from "@apollo/client";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth.js";
-import { ADD_COMMENT } from "../../utils/mutation.js";
+import { ADD_POST } from "../../utils/mutation.js";
 
-function PostForm({ postId }) {
-  const [commentText, setCommentText] = useState("");
+function PostForm() {
+  const [postText, setPostText] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
 
-  const [addComment, { error }] = useMutation(ADD_COMMENT);
+  const [addPost, { error }] = useMutation(ADD_POST);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const { data } = await addComment({
+      const { data } = await addPost({
         variables: {
-          postId,
-          commentText,
-          commentAuthor: Auth.getProfile().data.username,
+          postText,
+          postAuthor: Auth.getProfile().data.username,
         },
       });
 
-      setCommentText("");
+      setPostText("");
     } catch (err) {
       console.error(err);
     }
@@ -32,8 +31,8 @@ function PostForm({ postId }) {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === "commentText" && value.length <= 280) {
-      setCommentText(value);
+    if (name === "postText" && value.length <= 280) {
+      setPostText(value);
       setCharacterCount(value.length);
     }
   };
@@ -55,9 +54,9 @@ function PostForm({ postId }) {
           <form className=" " onSubmit={handleFormSubmit}>
             <div className=" ">
               <textarea
-                name="commentText"
-                placeholder="Add your comment..."
-                value={commentText}
+                name="postText"
+                placeholder="Add your post..."
+                value={postText}
                 className=" "
                 style={{ lineHeight: "1.5", resize: "vertical" }}
                 onChange={handleChange}
@@ -66,7 +65,7 @@ function PostForm({ postId }) {
 
             <div className=" ">
               <button className=" " type="submit">
-                Add Comment
+                Add Post
               </button>
             </div>
           </form>
@@ -81,8 +80,9 @@ function PostForm({ postId }) {
   );
 }
 
-PostForm.propTypes = {
-  postId: PropTypes.string.isRequired,
-};
+// PostForm.propTypes = {
+//   // postId: PropTypes.string.isRequired,
+//   postId: PropTypes.string.isRequired,
+// };
 
 export default PostForm;
