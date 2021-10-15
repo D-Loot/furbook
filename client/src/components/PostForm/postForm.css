@@ -16,7 +16,7 @@ input[type="file"] {
   display: none;
 }
 
-.share {
+.share-pet {
   font-size: 34px;
   font-family: "Roboto", sans-serif;
   color: var(--blue);
@@ -31,4 +31,15 @@ input[type="file"] {
   justify-content: center;
   align-items: center;
   margin: auto;
+}
+
+.log-in {
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  color: var(--charcoal);
+  font-weight: 500;
+}
+
+.log-in a {
+  color: var(--blue);
 }

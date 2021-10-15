@@ -53,3 +53,10 @@ body {
   font-weight: 400;
   margin: 2%;
 }
+.share {
+  font-size: 34px;
+  font-family: "Roboto", sans-serif;
+  color: var(--blue);
+  font-weight: 100;
+  margin-top: 20px;
+}

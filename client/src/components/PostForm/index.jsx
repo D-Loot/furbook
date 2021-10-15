@@ -86,7 +86,7 @@ function PostForm() {
 
   return (
     <div className="post-form">
-      <h4 className="share">Share your pet!</h4>
+      <h4 className="share-pet">Share your pet!</h4>
 
       {Auth.loggedIn() ? (
         <>
@@ -138,7 +138,7 @@ function PostForm() {
           </form>
         </>
       ) : (
-        <p>
+        <p className="log-in">
           You need to be logged. Please <Link to="/login">login</Link> or{" "}
           <Link to="/signup">signup.</Link>
         </p>
