@@ -32,3 +32,16 @@ body {
 .footer {
   margin-top: 50px;
 }
+
+.furUser {
+  font-size: 34px;
+  font-family: "Roboto", sans-serif;
+  color: var(--blue);
+  font-weight: 100;
+  margin-top: 20px;
+}
+
+.single-post {
+  width: 80%;
+  margin: auto;
+}
