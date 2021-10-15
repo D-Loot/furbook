@@ -8,7 +8,7 @@ import { QUERY_POSTS } from "../utils/queries";
 
 function Home() {
   const { loading, data } = useQuery(QUERY_POSTS);
-  const posts = data?.posts || [];
+  console.log("hi", data?.posts);
 
   return (
     <main className="wrapper">
@@ -24,7 +24,7 @@ function Home() {
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <PostList posts={posts} title="Latest Posts" />
+            <PostList posts={data?.posts} title="Latest Posts" />
           )}
         </div>
       </div>

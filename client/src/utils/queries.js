@@ -35,20 +35,17 @@ export const QUERY_POSTS = gql`
       postAuthor
       createdAt
       postImage {
-        _id
         imageId
         format
         version
       }
       commentCount
       comments {
-        _id
         commentAuthor
         createdAt
         commentText
       }
       treats {
-        _id
         treatAuthor
         createdAt
       }
