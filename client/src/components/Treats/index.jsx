@@ -13,7 +13,7 @@ const TreatBtn = () => {
           <i className="fas fa-bone">&nbsp;&nbsp;</i>
           Treat
         </Button>
-        <Label as="a" basic color="red" pointing="left">
+        <Label as="a" basic color="orange" pointing="left">
           {counter}
         </Label>
       </Button>
