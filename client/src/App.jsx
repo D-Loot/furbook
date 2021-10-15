@@ -19,7 +19,14 @@ import SinglePost from "./pages/SinglePost";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
-  uri: "http://localhost:3001/graphql",
+  uri:
+    import.meta.env.NODE_ENV === "development"
+      ? "http://localhost:3001/graphql"
+      : "https://furbook-backend.herokuapp.com/graphql",
+
+  // InMemoryCache is a class that implements the Cache interface.
+  // The cache is used to cache query results.
+  cache: new InMemoryCache(),
 });
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
