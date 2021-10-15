@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 import { ADD_COMMENT } from "../../utils/mutation";
+import "./commentForm.css";
 
 const CommentForm = ({ postId }) => {
   const [commentText, setCommentText] = useState("");
@@ -38,36 +39,31 @@ const CommentForm = ({ postId }) => {
   };
 
   return (
-    <div>
-      <h4>What are your thoughts on this post?</h4>
-
+    <div className="">
       {Auth.loggedIn() ? (
         <>
           <p
-            className={`m-0 ${
+            className={`m-0 text-xs text-medGray mb-2 ${
               characterCount === 280 || error ? "text-danger" : ""
             }`}
           >
             Character Count: {characterCount}/280
             {error && <span className="ml-2">{error.message}</span>}
           </p>
-          <form
-            className="flex-row justify-center justify-space-between-md align-center"
-            onSubmit={handleFormSubmit}
-          >
-            <div className="col-12 col-lg-9">
+          <form className="ui form" onSubmit={handleFormSubmit}>
+            <div className="input-box">
               <textarea
                 name="commentText"
                 placeholder="Add your comment..."
                 value={commentText}
-                className="form-input w-100"
+                className=""
                 style={{ lineHeight: "1.5", resize: "vertical" }}
                 onChange={handleChange}
               ></textarea>
             </div>
 
             <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
+              <button className="ui button primary" type="submit">
                 Add Comment
               </button>
             </div>

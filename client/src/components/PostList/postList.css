@@ -1,0 +1,50 @@
+.allPosts {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.userList {
+  background-color: var(--alabaster);
+  padding: 20px;
+}
+
+.eaUser {
+  margin-top: 40px;
+}
+
+.furUser {
+  font-size: 34px;
+  font-family: "Roboto", sans-serif;
+  color: var(--blue);
+  font-weight: 100;
+  margin-top: 20px;
+}
+
+.created {
+  font-size: 13px;
+  font-weight: 300;
+  font-family: "Roboto", sans-serif;
+  color: #a7a8aa;
+  font-style: italic;
+}
+
+.postTxt {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+}
+
+.postTxt p {
+  font-size: 20px;
+  color: var(--blue);
+}
+
+.commentBtn {
+  margin: 5px 0 20px;
+}

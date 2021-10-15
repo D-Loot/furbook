@@ -25,4 +25,38 @@ body {
 
 .innerWrapper {
   padding: 2%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.footer {
+  margin-top: 50px;
+}
+
+.furUser {
+  font-size: 34px;
+  font-family: "Roboto", sans-serif;
+  color: var(--blue);
+  font-weight: 100;
+  margin-top: 20px;
+}
+
+.single-post {
+  width: 80%;
+  margin: auto;
+}
+
+.profileHL {
+  font-size: 24px;
+  font-family: "Roboto", sans-serif;
+  color: var(--blue);
+  font-weight: 400;
+  margin: 2%;
+}
+.share {
+  font-size: 34px;
+  font-family: "Roboto", sans-serif;
+  color: var(--blue);
+  font-weight: 100;
+  margin-top: 20px;
 }

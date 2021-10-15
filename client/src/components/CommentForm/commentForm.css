@@ -1,0 +1,13 @@
+.share {
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  color: var(--blue);
+  font-weight: 400;
+  margin-top: 20px;
+}
+
+.input-box {
+  margin-bottom: 30px;
+  width: 100%;
+  display: flex;
+}
