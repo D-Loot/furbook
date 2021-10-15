@@ -4,12 +4,33 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth.js";
 import { ADD_POST } from "../../utils/mutation.js";
+import { QUERY_ME, QUERY_POSTS } from "../../utils/queries";
 
 function PostForm() {
   const [postText, setPostText] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
 
-  const [addPost, { error }] = useMutation(ADD_POST);
+  const [addPost, { error }] = useMutation(ADD_POST, {
+    update(cache, { data: { addPost } }) {
+      try {
+        const { posts } = cache.readQuery({ query: QUERY_POSTS });
+
+        cache.writeQuery({
+          query: QUERY_POSTS,
+          data: { thoughts: [addPost, ...posts] },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+
+      // update me object's cache
+      const { me } = cache.readQuery({ query: QUERY_ME });
+      cache.writeQuery({
+        query: QUERY_ME,
+        data: { me: { ...me, posts: [...me.posts, addPost] } },
+      });
+    },
+  });
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();

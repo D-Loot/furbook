@@ -3,19 +3,18 @@ import PropTypes from "prop-types";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
+const PostList = ({ posts, username = true }) => {
   if (!posts.length) {
     return <h3>No Posts Created</h3>;
   }
 
   return (
     <div>
-      {showTitle && <h3>{title}</h3>}
       {posts &&
         posts.map((post) => (
           <div key={post._id} className=" ">
             <h4 className=" ">
-              {showUsername ? (
+              {username ? (
                 <Link className=" " to={`/profiles/${post.postAuthor}`}>
                   {post.postAuthor} <br />
                   <span style={{ fontSize: "1rem" }}>
@@ -47,10 +46,8 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
 // Right now the local host site will crash with the propTypes
 // If we comment this out, the site will run
 PostList.propTypes = {
-  posts: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  showTitle: PropTypes.string.isRequired,
-  showUsername: PropTypes.string.isRequired,
+  posts: PropTypes.array.isRequired,
+  username: PropTypes.string.isRequired,
 };
 
 export default PostList;
