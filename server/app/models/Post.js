@@ -57,6 +57,7 @@ const postSchema = new Schema({
       },
     },
   ],
+  treatCount: String,
 });
 
 const Post = model("Post", postSchema);

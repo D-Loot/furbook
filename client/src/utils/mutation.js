@@ -34,12 +34,22 @@ export const ADD_POST = gql`
       comments {
         _id
         commentText
+        commentAuthor
+        createdAt
       }
       postImage {
+        _id
         imageId
         format
         version
       }
+      commentCount
+      treats {
+        _id
+        treatAuthor
+        createdAt
+      }
+      treatCount
     }
   }
 `;
@@ -54,8 +64,16 @@ export const ADD_COMMENT = gql`
       comments {
         _id
         commentText
+        commentAuthor
         createdAt
       }
+      commentCount
+      treats {
+        _id
+        treatAuthor
+        createdAt
+      }
+      treatCount
     }
   }
 `;

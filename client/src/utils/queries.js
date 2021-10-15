@@ -10,6 +10,12 @@ export const QUERY_USER = gql`
         _id
         postText
         createdAt
+        treatCount
+        treats {
+          _id
+          treatAuthor
+          createdAt
+        }
         postImage {
           _id
           imageId
@@ -35,6 +41,17 @@ export const QUERY_POSTS = gql`
         version
       }
       commentCount
+      comments {
+        _id
+        commentAuthor
+        createdAt
+        commentText
+      }
+      treats {
+        _id
+        treatAuthor
+        createdAt
+      }
       treatCount
     }
   }
@@ -76,15 +93,26 @@ export const QUERY_ME = gql`
         postText
         postAuthor
         createdAt
+        postImage {
+          _id
+          imageId
+          format
+          version
+        }
+        treats {
+          _id
+          treatAuthor
+          createdAt
+        }
+        comments {
+          _id
+          commentText
+          commentAuthor
+          createdAt
+        }
+        commentCount
+        treatCount
       }
-      postImage {
-        _id
-        imageId
-        format
-        version
-      }
-      commentCount
-      treatCount
     }
   }
 `;
