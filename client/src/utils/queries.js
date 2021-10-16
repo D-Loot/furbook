@@ -12,12 +12,10 @@ export const QUERY_USER = gql`
         createdAt
         treatCount
         treats {
-          _id
           treatAuthor
           createdAt
         }
         postImage {
-          _id
           imageId
           format
           version
@@ -62,13 +60,11 @@ export const QUERY_SINGLE_POST = gql`
       postAuthor
       createdAt
       comments {
-        _id
         commentText
         commentAuthor
         createdAt
       }
       postImage {
-        _id
         imageId
         format
         version
@@ -91,18 +87,15 @@ export const QUERY_ME = gql`
         postAuthor
         createdAt
         postImage {
-          _id
           imageId
           format
           version
         }
         treats {
-          _id
           treatAuthor
           createdAt
         }
         comments {
-          _id
           commentText
           commentAuthor
           createdAt
