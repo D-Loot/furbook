@@ -1,0 +1,5 @@
+.card-body {
+  background-color: var(--alabaster);
+  color: var(--charcoal);
+  padding: 2%;
+}
