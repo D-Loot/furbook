@@ -1,37 +1,73 @@
-# Client
+# ArtSell
 
-This uses [Snowpack](https://www.snowpack.dev/tutorials/react). But, you don't care. Just `npm i` and `npm start`.
+## Table of Contents:
 
-## Suggestions
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Link](#link)
+- [Slides](#slides)
+- [Contact](#contact)
 
-- Take your mockups and dissect them into components. Decide if there are [shared components](client/src/components).
-- Consider keeping components that are only good for one page 📃 inside of [`pages`](client/src/pages).
-- For further consideration, review [Thinking in
-  React](https://reactjs.org/docs/thinking-in-react.html#start-with-a-mock)
-- If you think 🤔 something should be its own component, it probably should be!
-- Depending on your application details, you might want additional directories. For additional info ℹ️ review
-  [this](https://www.taniarascia.com/react-architecture-directory-structure/#directory-structure).
-- Get the mock data from the server-side folks. This could just be `.js` files that you import.
-- Your **providers** will probably need to wrap your whole app (e.g. `BrowserRouter`). If you're NS 😕, this is probably
-  fine. However, don't over-provide **context** if you don't have to.
-- [Tailwind](https://tailwindcss.com/docs) with [Tailwind Form](https://github.com/tailwindlabs/tailwindcss-forms) is
-  included.
-- Consider [Headless UI](https://headlessui.dev/) if it makes sense for your application.
-- Or, if you really want something robust and there is a good need, consider [Chakra UI](https://chakra-ui.com/). It
-  plays nicely with Tailwind [as per the creator](https://github.com/chakra-ui/chakra-ui/issues/634#issuecomment-619626792).
+## Description:
 
-Use `useEffect` to set your `title` for each page:
+ArtSell is a full stack e-commerce project built by Dan Looten, Tyler Lawson and Mehalet Kesate. It is a small online art gallery for the purpose of purchasing art.
 
-```javascript
-import React from "react";
+## Installation:
 
-function HomePage() {
-  React.useEffect(() => {
-    document.title = "🏠 Home Page 📃";
-  }, []);
+Must install the following node package managers:
 
-  return <h1 className="text-4xl font-bold text-center">🏠 Home Page</h1>;
-}
+- dotenv
+- express
+- mysql2
+- sequelize
+- bcrypt
+- express-sessions
+- express-handlebars
+- stripe
 
-export default HomePage;
-```
+## Usage:
+
+From the terminal: ender npm start to run the server.
+From a browser: navigate to http://localhost:3001
+
+## Link:
+
+https://artsell.herokuapp.com/
+
+## Slides:
+
+https://docs.google.com/presentation/d/1FHXKreLhIvNm4341Wc5z-3CErUvo7d3k_jE_VvV1SU0/edit?usp=sharing
+
+## Contact:
+
+Email:
+Dan: danwlooten@gmail.com
+
+Tyler: lifewithtnt@gmail.com
+
+Mehalet: tatybcoding@gmail.com
+
+Github: MehaletKB/ArtSell
+
+## Screenshots:
+
+![SS1](./Assets/SS1.PNG)
+
+The homepage lists 6 pieces of art, and the header contains a login page along with a gallery page which links back to the main page.
+
+![SS2](./Assets/SS2.PNG)
+
+The login page requires an email and a password. If you have not signed up yet, select the Signup button to do so.
+
+![SS3](./Assets/SS3.PNG)
+Add a username, email and password to signup.
+
+![SS4](./Assets/SS4.PNG)
+Once signed in, the header displays the gallery, cart and logout links.
+
+![SS5](./Assets/SS5.PNG)
+After selecting the Lucid, Side and Vis artwork from the page before, they are now displayed in the cart.
+
+![SS6](./Assets/SS6.PNG)
+By selecting the Submit Order button on the previous page, the user is directed to the payment processing service Stripe, which displays the cart contents and allows the user to input their payment information to submit the sale.
