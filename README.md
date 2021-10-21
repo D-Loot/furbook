@@ -26,8 +26,8 @@ This application requires following dependencies:
 - Mongoose
 - bcrypt
 - dotenv
-## Screenshot:
-![Gif](./assets/furbook-gif.gif)
+## Screenshot GIF:
+![Gif](./assets/furbookgif.gif)
 ## Link:
 https://furbook.netlify.app/
 ## Slides:
