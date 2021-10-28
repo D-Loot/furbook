@@ -9,7 +9,6 @@ const PostList = ({ posts, username = true }) => {
   if (!posts.length) {
     return <h3>No Posts Created</h3>;
   }
-  console.log(posts);
   return (
     <div className="allPosts">
       {posts &&
