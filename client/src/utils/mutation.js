@@ -78,10 +78,9 @@ export const ADD_COMMENT = gql`
   }
 `;
 
-export const ADD_TREAT = gql`
-  mutation addTreat($postId: ID!) {
-    addTreat(postId: $postId) {
-      postId
+export const TREAT_POST = gql`
+  mutation treatPost($postId: ID!) {
+    treatPost(postId: $postId) {
       treats {
         _id
         createdAt

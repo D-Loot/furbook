@@ -55,7 +55,7 @@ const PostList = ({ posts, username = true }) => {
               </Link>
             </div>
             <div className="treatBtn">
-              <Treats />
+              <Treats postId={post._id} treatCount={post.treatCount} />
             </div>
           </div>
         ))}
