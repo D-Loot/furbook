@@ -4,6 +4,7 @@ import { Button, Label } from "semantic-ui-react";
 import { TREAT_POST } from "../../utils/mutation.js";
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
+import "./treat.css";
 
 const TreatBtn = ({ postId, treatCount }) => {
   const [treatPost, { error }] = useMutation(TREAT_POST, {
@@ -44,9 +45,12 @@ const TreatBtn = ({ postId, treatCount }) => {
           </Button>
         </Link>
       ) : (
-        <p>
-          You need to be logged in to give Treats! Please{" "}
-          <Link to="/login">login</Link> or <Link to="/register">signup.</Link>
+        <p className="signInText">
+          <div>
+            You need to be logged in to give Treats! Please{" "}
+            <Link to="/login">login</Link> or{" "}
+            <Link to="/register">signup.</Link>
+          </div>
         </p>
       )}
     </div>
