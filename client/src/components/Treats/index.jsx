@@ -27,7 +27,7 @@ const TreatBtn = ({ postId, treatCount }) => {
   return (
     <div>
       {Auth.loggedIn() ? (
-        <Link to="/">
+        <Link>
           <Button as="div" labelPosition="right">
             <Button onClick={clickedTreat} color="orange">
               <i className="fas fa-bone">&nbsp;&nbsp;</i>
